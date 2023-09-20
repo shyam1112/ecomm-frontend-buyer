@@ -1,0 +1,99 @@
+/* CSS for Product Details Component */
+.productt-detailss {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-top: 80px;
+}
+
+.productt {
+  display: flex;
+  flex-direction: row; 
+  margin-bottom: 20px;
+}
+
+.productt-content {
+  margin-left: 50px;
+  flex: 2; 
+}
+
+.productt-image-container img {
+  margin-top: 20px;
+  width: 200px;
+}
+
+.productt-image {
+  max-width: 100%;
+  height: auto;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.productt-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+.productt-description {
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+.productt-price {
+  font-size: 18px;
+  margin-top: 10px;
+}
+
+.productt-size {
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+.update-button {
+  background-color: #000000;
+  color: #fff;
+  padding: 10px 20px;
+  font-size: 18px;
+  border: none;
+  cursor: pointer;
+  margin-top: 20px;
+  border-radius: 20px;
+}
+
+.update-button:hover {
+  background-color: #585d60;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .productt {
+      flex-direction: column; /* Switch to a column layout */
+      align-items: center;
+    
+  }
+
+  .productt-image-container,
+  .productt-content {
+      flex: 1; /* Equal width for both image and content */
+      max-width: 100%; /* Ensure they take full width in column layout */
+      margin-right: 0; /* Remove right margin in column layout */
+     
+  }
+
+  .productt-detailss {
+      padding: 10px;
+  }
+
+  .productt-title {
+      font-size: 20px;
+  }
+
+  .productt-description,
+  .productt-price,
+  .productt-size {
+      font-size: 14px;
+  }
+}

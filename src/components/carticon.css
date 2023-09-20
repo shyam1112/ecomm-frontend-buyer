@@ -1,0 +1,27 @@
+/* .carticonn{
+  float: right;
+  position: absolute;
+    top: 0%;
+    right: 15%;
+    transform: translate(0, -50%);
+    cursor: pointer;
+    margin-top: 10px;
+    display: block;
+    margin-right: 50px;
+    position: absolute;
+    right: 0px;
+
+  }
+
+  @media (max-width:1055px) { 
+    .carticonn {
+      position:relative;
+      bottom: 0px;
+
+      margin-top: 0px;
+    display: block;
+    margin-right: 0%;
+  
+    right: 12%;
+    }
+  } */
