@@ -25,7 +25,7 @@ const Checkout = () => {
     const orderData = location.state.orderData;
 
     try {
-      const response = await fetch('http://localhost:5000/order', {
+      const response = await fetch('https://royal-backend-seller.onrender.com/order', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -92,9 +92,9 @@ const Checkout = () => {
             onChange={handleChange}
             required
           >
-            <option value="credit-card">Credit Card</option>
-            <option value="paypal">PayPal</option>
-            <option value="bank-transfer">Bank Transfer</option>
+            <option value="Cash On Delivery">Cash On Delivery</option>
+            {/* <option value="paypal">PayPal</option>
+            <option value="bank-transfer">Bank Transfer</option> */}
           </select>
         </div>
         <button type="submit">Place Order</button>

@@ -14,7 +14,7 @@ function Product() {
     }, []);
 
     const getData = async () => {
-        let result = await fetch("http://localhost:5000/products");
+        let result = await fetch("https://royal-backend-seller.onrender.com/products");
         result = await result.json();
         setProduct(result);
     }
@@ -23,7 +23,7 @@ function Product() {
         let key = event.target.value;
         if (key) {
 
-            let result = await fetch(`http://localhost:5000/search/${key}`);
+            let result = await fetch(`https://royal-backend-seller.onrender.com/search/${key}`);
             result = await result.json();
             if (result) {
                 setProduct(result);
@@ -37,7 +37,7 @@ function Product() {
     const handleAddToCart = async (item) => {
 
 
-        let result = await fetch('http://localhost:5000/addcart', {
+        let result = await fetch('https://royal-backend-seller.onrender.com/addcart', {
             method: 'post',
             body: JSON.stringify({
                 name: item.name,
@@ -145,7 +145,7 @@ function Product() {
                                     </ul>
                                 ))
                             ) : (
-                                <div className="loader"></div>
+                                <div className="loader" ></div>
                             )}
                         </div>
 

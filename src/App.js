@@ -1,7 +1,6 @@
 import Header from "./components/Header";
 import Login from "./components/Login";
 import Register from "./components/Register";
-import Dashboard from "./components/Dashboard";
 import Error from "./components/Error";
 import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';

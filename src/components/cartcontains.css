@@ -66,8 +66,15 @@
 .update-button:hover {
   background-color: #585d60;
 }
-
-/* Responsive Styles */
+.color-selection input{
+  width: 25px;
+    display: inline-block;
+    margin-left: 5px;
+}
+.color-selection{
+  margin-left: 5px;
+}
+  /* Responsive Styles */
 @media (max-width: 768px) {
   .productt {
       flex-direction: column; /* Switch to a column layout */

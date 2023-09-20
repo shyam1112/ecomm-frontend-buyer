@@ -25,7 +25,7 @@ function Cart() {
 
   const getData = async () => {
     try {
-      let result = await fetch(`http://localhost:5000/carts/${authId}`);
+      let result = await fetch(`https://royal-backend-seller.onrender.com/carts/${authId}`);
       if (!result.ok) {
         throw new Error(`Fetch error: ${result.status}`);
       }
@@ -37,7 +37,7 @@ function Cart() {
   }
 
   const removeFromCart = async (id) => {
-    let result = await fetch(`http://localhost:5000/carts/${id}`, {
+    let result = await fetch(`https://royal-backend-seller.onrender.com/carts/${id}`, {
       method: "delete"
     });
     result = await result.json();
@@ -55,7 +55,7 @@ function Cart() {
     };
     navigate('/checkout', { state: { orderData } });
   };
-  
+
   return (
     <div className="cart-container">
       <h1>Your Cart</h1>
@@ -63,12 +63,19 @@ function Cart() {
         {cart.map((item, index) => (
           <div className="cart-item" key={item._id + index}>
             <div className="item-info">
-              <h3>{item.name}</h3>
               <img src={item.img} alt={item.name} />
-              <p>{item.category}</p>
-              <p>{item.company}</p>
-              <p>&#8377;{item.price}</p>
-              <p>{item.size}</p>
+              <div className='cartitemdata'>
+              <h3>{item.name}</h3>
+                <p> Category : {item.category}</p>
+                <p>Company : {item.company}</p>
+                <p>Price : &#8377;{item.price}</p>
+                <p>Size: {item.size}</p>
+                <p>Selected Color : <span style={{
+                  backgroundColor: `${item.color1}`,
+                  width: "30px",
+                  height: "20px",
+                }}></span></p>
+              </div>
             </div>
             <button onClick={() => removeFromCart(item._id)}>Remove</button>
           </div>
