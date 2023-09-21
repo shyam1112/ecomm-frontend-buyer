@@ -7,6 +7,7 @@ const Checkout = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
+    number:'',
     address: '',
     paymentMethod: 'credit-card',
   });
@@ -23,7 +24,7 @@ const Checkout = () => {
     e.preventDefault();
 
     const orderData = location.state.orderData;
-
+    console.log(formData);
     try {
       const response = await fetch('https://royal-backend-seller.onrender.com/order', {
         method: 'POST',
@@ -68,6 +69,17 @@ const Checkout = () => {
             id="email"
             name="email"
             value={formData.email}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="number">Number</label>
+          <input
+            type="number"
+            id="number"
+            name="number"
+            value={formData.number}
             onChange={handleChange}
             required
           />

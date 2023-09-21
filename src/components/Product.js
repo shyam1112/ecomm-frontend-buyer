@@ -130,9 +130,9 @@ function Product() {
                                                 </div>
                                                 </Link>
                                                 <div className="btn">
-                                                    <button className="btn-action" onClick={() => handleAddToCart(item)}>
+                                                    {/* <button className="btn-action" onClick={() => handleAddToCart(item)}>
                                                         Add to Cart
-                                                    </button>
+                                                    </button> */}
                                                 </div>
 
                                             </div>

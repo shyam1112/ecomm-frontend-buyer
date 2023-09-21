@@ -141,7 +141,7 @@ function Footer(){
                 <ion-icon name="mail-outline"></ion-icon>
               </div>
   
-              <Link to="mailto:example@gmail.com" className="footer-nav-link">example@gmail.com</Link>
+              <Link to="mailto:example@gmail.com" className="footer-nav-link"> rrfashion@gmail.com</Link>
             </li>
   
           </ul>
