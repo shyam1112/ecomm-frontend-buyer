@@ -196,7 +196,9 @@ function Footer(){
   <p className="copyright">
     Copyright &copy; <Link to="/home">rrfashion</Link> all rights reserved.
   </p>
-
+  <p className="copyright">
+    Contact us : +91 9727666576
+  </p>
 </div>
 
 </div>

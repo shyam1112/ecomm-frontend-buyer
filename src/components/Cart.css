@@ -1,5 +1,39 @@
 /* Cart.css */
 
+/* Counter Container */
+.counter {
+  width: 150px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Counter Input */
+.counter input {
+  width: 50px;
+  border: 0;
+  line-height: 30px;
+  font-size: 20px;
+  text-align: center;
+  background: #5a6e8c;
+  color: #fff;
+  appearance: none;
+  outline: 0;
+}
+
+/* Counter Buttons */
+.counter span {
+  display: block;
+  font-size: 25px;
+  padding: 0 10px;
+  cursor: pointer;
+  color: #3d516e;
+  user-select: none;
+}
+
+
+
 /* Container styles */
 .cart-container {
   max-width: 800px;

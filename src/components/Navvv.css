@@ -1503,6 +1503,7 @@
     padding: 5px;
     border-radius: var(--border-radius-sm);
     transition: var(--transition-timing);
+    align-items: center;
   }
   
   .product-grid .btn-action:hover {

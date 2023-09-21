@@ -7,6 +7,7 @@ function Cart() {
   const [cart, setCart] = useState([]);
   const [price, setPrice] = useState(0);
   const authId = localStorage.getItem('userid');
+  const [count, setCount] = useState(1);
   const { cartItems, setCartItems } = useCart();
   const navigate = useNavigate();
 
@@ -51,9 +52,20 @@ function Cart() {
     const orderData = {
       userId: authId,
       cart: cart,
-      total: price.toFixed(2),
+      total: price.toFixed(2)
     };
     navigate('/checkout', { state: { orderData } });
+  };
+
+
+  const increaseCount = () => {
+    setCount((prevCount) => prevCount + 1);
+  };
+
+  const decreaseCount = () => {
+    if (count > 1) {
+      setCount((prevCount) => prevCount - 1);
+    }
   };
 
   return (
@@ -65,7 +77,7 @@ function Cart() {
             <div className="item-info">
               <img src={item.img} alt={item.name} />
               <div className='cartitemdata'>
-              <h3>{item.name}</h3>
+                <h3>{item.name}</h3>
                 <p> Category : {item.category}</p>
                 <p>Company : {item.company}</p>
                 <p>Price : &#8377;{item.price}</p>
@@ -75,6 +87,11 @@ function Cart() {
                   width: "30px",
                   height: "20px",
                 }}></span></p>
+              </div>
+              <div className="counter">
+                <span className="down" onClick={decreaseCount}>-</span>
+                <input type="text" value={1} readOnly />
+                <span className="up" onClick={increaseCount}>+</span>
               </div>
             </div>
             <button onClick={() => removeFromCart(item._id)}>Remove</button>
