@@ -41,10 +41,10 @@ export default function Slideshow() {
 
               <p className="banner-subtitle">Trending accessories</p>
 
-              <h2 className="banner-title">Modern sunglasses</h2>
+              <h2 className="banner-title">Modern accessories </h2>
 
               <p className="banner-text">
-                starting at &dollar; <b>15</b>.00
+              Fashion Forward Savings
               </p>
 
               <Link to="/home" className="banner-btn">Shop now</Link>
@@ -61,10 +61,10 @@ export default function Slideshow() {
 
               <p className="banner-subtitle">Sale Offer</p>
 
-              <h2 className="banner-title">New fashion summer sale</h2>
+              <h2 className="banner-title">New fashion  sale</h2>
 
               <p className="banner-text">
-                starting at &dollar; <b>29</b>.99
+              Sleek Styles Sale
               </p>
 
               <Link to="/home" className="banner-btn">Shop now</Link>

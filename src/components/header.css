@@ -9,6 +9,35 @@ header{
     
 }
 
+.custom-menu {
+    position: absolute;
+    top: 39px; /* Adjust the top position as needed */
+    background-color: #fff;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    z-index: 1;
+    width: 100px; /* Adjust the width as needed */
+
+    cursor: pointer;
+    margin-top: 10px;
+    display: inline-block;
+    margin-right: 20px;
+    right: 15px;
+  }
+  
+  /* Style for the custom menu items */
+  .custom-menu-item {
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .custom-menu-item:hover {
+    background-color: #000000;
+    color: azure;
+  }
+
+  
 header nav{
     max-width: 85%;
     height: 80%;
@@ -34,7 +63,7 @@ header nav h5{
     }
     header nav img{
         width: 50px;
-        margin-top: 10px;
+        margin-top: 0rem;
         display: block;
         position: absolute;
     
@@ -48,7 +77,7 @@ header nav a{
 
 header nav img{
     width: 50px;
-    margin-top: 10px;
+    margin-top: 0rem;
     display: block;
     margin-left: 5%;
     position: absolute;

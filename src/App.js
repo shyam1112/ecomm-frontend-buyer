@@ -2,8 +2,6 @@ import Header from "./components/Header";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import Error from "./components/Error";
-import CircularProgress from '@mui/material/CircularProgress';
-import Box from '@mui/material/Box';
 import { Routes, Route, useNavigate } from "react-router-dom"
 import { useEffect, useContext, useState } from "react";
 import { LoginContext } from "./components/ContextProvider/Context";
@@ -67,10 +65,10 @@ function App() {
   
           </>
         ) : (
-          <Box sx={{ display: 'flex', justifyContent: "center", alignItems: "center", height: "100vh" }}>
-            Loading... &nbsp;
-            <CircularProgress />
-          </Box>
+          <div className="loading-spinner" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', fontSize: '24px', color: '#333' }}>
+  Loading...
+  <div style={{ border: '4px solid rgba(0, 0, 0, 0.3)', borderRadius: '50%', borderTop: '4px solid #333', width: '40px', height: '40px', animation: 'spin 2s linear infinite' }}></div>
+</div>
         )}
     </>
   );
