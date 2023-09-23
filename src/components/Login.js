@@ -1,116 +1,92 @@
-import React, { useContext, useState } from 'react'
-import { NavLink ,useNavigate} from "react-router-dom"
+import React, { useEffect, useState } from 'react';
+import { NavLink, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import { Player, Controls } from '@lottiefiles/react-lottie-player';
-import "./mix.css"
-import { LoginContext } from './ContextProvider/Context';
+import "./mix.css";
 
 const Login = () => {
+    const navigate = useNavigate();
+    useEffect(() => {
+        const auth = localStorage.getItem('user');
+        if (auth) {
+            navigate("/home");
+        }
+    }, []);
 
     const [passShow, setPassShow] = useState(false);
+    const [email, setEmail] = useState('');
+    const [pass, setPass] = useState('');
 
-    const [inpval, setInpval] = useState({
-        email: "",
-        password: "",
-    });
-    const { logindata, setLoginData } = useContext(LoginContext);
-    const history = useNavigate();
-
-    const setVal = (e) => {
-        // console.log(e.target.value);
-        const { name, value } = e.target;
-
-        setInpval(() => {
-            return {
-                ...inpval,
-                [name]: value
-            }
-        })
-    };
-
-
-    const loginuser = async(e) => {
+    const loginuser = async (e) => {
         e.preventDefault();
 
-        const { email, password } = inpval;
-
         if (email === "") {
-            toast.error("email is required!", {
+            toast.error("Email is required!", {
                 position: "top-center"
             });
         } else if (!email.includes("@")) {
-            toast.warning("includes @ in your email!", {
+            toast.warning("Include @ in your email!", {
                 position: "top-center"
             });
-        } else if (password === "") {
-            toast.error("password is required!", {
+        } else if (pass === "") {
+            toast.error("Password is required!", {
                 position: "top-center"
             });
-        } else if (password.length < 6) {
-            toast.error("password must be 6 char!", {
+        } else if (pass.length < 6) {
+            toast.error("Password must be at least 6 characters!", {
                 position: "top-center"
             });
         } else {
-            // console.log("user login succesfully done");
-
-
-            const data = await fetch(`https://royal-backend-buyer.onrender.com/login`,{
-                method:"POST",
+        
+            let result= await fetch('https://royal-backend-seller.onrender.com/login',{
+                method:'post',
+                body:JSON.stringify({email,pass}),
                 headers:{
-                    "Content-Type":"application/json"
+                    'content-type':'application/json'
                 },
-                body:JSON.stringify({
-                     email, password
-                })
             });
-
-            const res = await data.json();
-            //  console.log(res);
-
-            if(res.status === 201){
-                localStorage.setItem("userid", res.result.userValid._id); 
-                localStorage.setItem("usersdatatoken",res.result.token);
-                localStorage.setItem("isLoggedIn", true);
-                setLoginData(res.result);
-                history("/home")
-                setInpval({...inpval,email:"",password:""});
-            }else {
-                // Handle the error case here, such as displaying an error message
-                console.error("Login failed:", res);
-              }
+            result=await result.json();
+            if(result.name){
+                localStorage.setItem("user",JSON.stringify(result));
+                localStorage.setItem("userid", result._id);
+                navigate('/home');
+            }else{
+                toast.error("Login failed. Please check your credentials and try again.", {
+                        position: "top-center"
+                });
+            }
+                
+            }
+   
         }
-    }
 
     return (
-        <>
         <div className='loginn'>
-
-       
-        <div className='logindesign'>
-        <Player
-          autoplay
-          loop
-          src=" https://lottie.host/23fc76de-857c-408d-9f3c-a5e2ac43cfbb/6OVTIXpiJC.json"
-          style={{ height: '350px', width: '350px' }}>
-          <Controls visible={false} buttons={['play', 'repeat', 'frame', 'debug']} />
-        </Player>
-        </div>
+            <div className='logindesign'>
+                <Player
+                    autoplay
+                    loop
+                    src="https://lottie.host/23fc76de-857c-408d-9f3c-a5e2ac43cfbb/6OVTIXpiJC.json"
+                    style={{ height: '350px', width: '350px' }}>
+                    <Controls visible={false} buttons={['play', 'repeat', 'frame', 'debug']} />
+                </Player>
+            </div>
             <section>
                 <div className="form_data">
                     <div className="form_heading">
                         <h1>Welcome Back, Log In</h1>
-                        <p>Hi, we are you glad you are back. Please login.</p>
+                        <p>Hi, we are glad you are back. Please log in.</p>
                     </div>
 
                     <form>
                         <div className="form_input">
                             <label htmlFor="email">Email</label>
-                            <input type="email" value={inpval.email} onChange={setVal} name="email" id="email" placeholder='Enter Your Email Address' />
+                            <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} name="email" id="email" placeholder='Enter Your Email Address' />
                         </div>
                         <div className="form_input">
                             <label htmlFor="password">Password</label>
                             <div className="two">
-                                <input type={!passShow ? "password" : "text"} onChange={setVal} value={inpval.password} name="password" id="password" placeholder='Enter Your password'  />
+                                <input type={!passShow ? "password" : "text"} value={pass} onChange={(e) => setPass(e.target.value)} name="password" id="password" placeholder='Enter Your password' />
                                 <div className="showpass" onClick={() => setPassShow(!passShow)}>
                                     {!passShow ? "Show" : "Hide"}
                                 </div>
@@ -123,9 +99,8 @@ const Login = () => {
                     <ToastContainer />
                 </div>
             </section>
-            </div>
-        </>
-    )
+        </div>
+    );
 }
 
-export default Login
+export default Login;

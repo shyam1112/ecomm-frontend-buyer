@@ -42,7 +42,7 @@ export default function Profile() {
                         </div>
                         <div className="coontainer">
                             <h4><b><i>Hi! </i></b></h4>
-                            <h4><b><i>{data.fname}</i></b></h4>
+                            <h4><b><i>{data.name}</i></b></h4>
                             <p>Your Email is : {data.email}</p>
                         </div>
                     </div>
