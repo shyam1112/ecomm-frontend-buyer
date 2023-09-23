@@ -44,6 +44,11 @@ const CartContain = () => {
                 'content-type': 'application/json'
             },
         });
+        if(result.ok){
+            toast.success("Product Added To Cart . . . . . . GO TO CART :) ", {
+                position: "top-center"
+            });   
+        }
 
         // Handle the API response as needed
     }
