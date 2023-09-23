@@ -22,34 +22,41 @@ const Header = () => {
     const handleClose = () => {
         setAnchorEl(null);
     };
+    // const handleLogout=()=>{
+    //     localStorage.removeItem("usersdatatoken")
+    // }
 
 
     const logoutuser = async () => {
-        let token = localStorage.getItem("usersdatatoken");
+        localStorage.removeItem("usersdatatoken");
+        localStorage.removeItem("userid")
+        setLoginData(false)
+        history("/");
+        
+        // const res = await fetch(`/logout`, {
+        //     method: "GET",
+        //     headers: {
+        //         "Content-Type": "application/json",
+        //         "Authorization": token,
+        //         Accept: "application/json"
+        //     },
+        //     credentials: "include"
+        // });
 
-        const res = await fetch(`/logout`, {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": token,
-                Accept: "application/json"
-            },
-            credentials: "include"
-        });
-
-        const data = await res.json();
+        // const data = await res.json();
         // console.log(data);
 
-        if (data.status == 201) {
-            console.log("use logout");
-            localStorage.removeItem("usersdatatoken");
-            localStorage.removeItem("userid")
-            setLoginData(false)
-            history("/");
-        } else {
-            console.log("error");
-        }
+        // if (data.status == 201) {
+        //     console.log("use logout");
+        //     localStorage.removeItem("usersdatatoken");
+        //     localStorage.removeItem("userid")
+        //     setLoginData(false)
+        //     history("/");
+        // } else {
+        //     console.log("error");
+        // }
     }
+
 
     const authId = localStorage.getItem('userid');
 
