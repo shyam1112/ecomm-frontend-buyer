@@ -42,9 +42,9 @@ const Header = () => {
                         <h5>Royal  Perfume &  Novelty</h5>
                     </div>
 
-                    <div className='carticon'>
+                    {logindata?(<div className='carticon'>
                         <Carticon />
-                    </div>
+                    </div>):null}
 
                     <div className="avtar" onClick={toggleMenu}>
                         {logindata ? (
@@ -65,19 +65,7 @@ const Header = () => {
                                 👤
                             </div>
                         ) : (
-                            <div
-                                style={{
-                                    background: "blue",
-                                    width: "36px", // Adjust the width as needed
-                                    height: "36px", // Adjust the height as needed
-                                    display: "flex",
-                                    alignItems: "center",
-                                    justifyContent: "center",
-                                    borderRadius: "50%",
-                                }}
-                            >
-                                {/* Add your default avatar icon or text here */}
-                            </div>
+                            null
                         )}
                     </div>
 
