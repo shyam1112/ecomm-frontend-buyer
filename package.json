@@ -2,7 +2,7 @@
   "name": "client",
   "version": "0.1.0",
   "private": true,
-  "proxy": "https://royal-backend-buyer.onrender.com/",
+  "proxy": "https://royal-backend-buyer.onrender.com",
   "dependencies": {
     "@lottiefiles/react-lottie-player": "^3.5.3",
     "bootstrap": "^5.3.1",
