@@ -13,7 +13,7 @@ export default function Profile() {
 
     const getData = async () => {
         try {
-            let result = await fetch(`/profile/${authId}`);
+            let result = await fetch(`https://royal-backend-buyer.onrender.com/profile/${authId}`);
             if (!result.ok) {
                 throw new Error(`Fetch error: ${result.status}`);
             }

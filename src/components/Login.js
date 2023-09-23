@@ -54,7 +54,7 @@ const Login = () => {
             // console.log("user login succesfully done");
 
 
-            const data = await fetch("/login",{
+            const data = await fetch(`https://royal-backend-buyer.onrender.com/login`,{
                 method:"POST",
                 headers:{
                     "Content-Type":"application/json"

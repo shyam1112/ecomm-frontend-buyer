@@ -19,7 +19,7 @@ function App() {
   const DashboardValid = async () => {
     let token = localStorage.getItem("usersdatatoken");
 
-    const res = await fetch("/validuser", {
+    const res = await fetch(`https://royal-backend-buyer.onrender.com/validuser`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -29,7 +29,7 @@ function App() {
 
     const data = await res.json();
 
-    if (data.status == 401 || !data) {
+    if (data.status === 401 || !data) {
       console.log("user not valid");
     } else {
       console.log("user verify");
