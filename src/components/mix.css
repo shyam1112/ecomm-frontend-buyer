@@ -1,7 +1,8 @@
 section{
     width: 100%;
-    padding: 10px;
+    padding: 20px;
     min-height:calc(100vh - 80px);
+    margin-bottom: 0px;
 }
 
 .logindesign {
@@ -19,25 +20,27 @@ section{
 
 @media (max-width: 768px) {
     .logindesign {
-        margin-left: 20px; 
-        margin-top: 20px; 
+        margin-left: 10px; 
+        margin-top: 10px; 
     }
     
     .loginn {
         flex-direction: column; 
     }
+
 }
 
 section .form_data{
     max-width: 550px;
-    margin: 25px auto;
-    padding: 35px 10px;
+    margin: 15px auto;
+    padding: 35px 0px;
     box-shadow: 0 0 15px -10px #2d3748;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
+
 
 .form_heading{
     display: flex;
@@ -46,7 +49,7 @@ section .form_data{
 }
 
 .form_data h1{
-    font-size: 34px;
+    font-size: 1.5rem;
     color: #2a4365;
 }
 
@@ -57,7 +60,7 @@ section .form_data{
 }
 
 .form_data form{
-    margin-top: 45px;
+    margin-top: -5px;
     width: 100%;
     padding: 10px 50px;
 }

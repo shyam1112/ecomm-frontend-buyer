@@ -3,8 +3,8 @@
 .cart-icon {
   position: relative;
   cursor: pointer;
-  margin-top: -12px;
-  margin-right: -1rem;
+  margin-top: -10px;
+  margin-right: -1.6rem;
 }
 
 .cart-badge {
