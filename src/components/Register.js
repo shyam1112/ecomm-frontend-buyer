@@ -69,7 +69,7 @@ const Register = () => {
 
                 if (response.ok) {
                     const data = await response.json();
-                    localStorage.setItem("user", JSON.stringify(data));
+                    localStorage.setItem("userid", JSON.stringify(data));
                     toast.success("Registration Successfully done 😃!", {
                         position: "top-center"
                     });

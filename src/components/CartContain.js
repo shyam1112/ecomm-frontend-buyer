@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import './cartcontains.css'
+import { ToastContainer, toast } from 'react-toastify';
+
 
 const CartContain = () => {
     const [productdetails, setProductDetails] = useState([]);
@@ -22,8 +24,9 @@ const CartContain = () => {
     // Define updateProduct as a callback function
     const addtocart = async (item) => {
         if (!selectedColor) {
-            alert("Please select a color before adding to cart.");
-            return;
+            toast.error("Please select color :)", {
+                position: "top-center"
+            });            return;
         }
         let result = await fetch('https://royal-backend-seller.onrender.com/addcart', {
             method: 'post',
@@ -112,6 +115,7 @@ const CartContain = () => {
                     </div>
                 </div>
             ))}
+            <ToastContainer />
         </div>
     );
 };

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './checkout.css';
+import { ToastContainer, toast } from 'react-toastify';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 const Checkout = () => {
@@ -31,13 +32,16 @@ const Checkout = () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ formData, orderData }), // Send both form data and order data
+        body: JSON.stringify({ formData, orderData }), 
       });
 
       if (response.ok) {
-        alert("Your Order is confirm ");
-        navigate('/home')
-        // You can navigate to a confirmation page or perform any other action here
+        toast.success("Order is Successfully done 😃!", {
+                        position: "top-center"
+                    });
+                    setTimeout(function() {
+                      navigate('/home');
+                  }, 2000);
       } else {
         console.error('Failed to place the order');
       }
@@ -111,6 +115,7 @@ const Checkout = () => {
         </div>
         <button type="submit">Place Order</button>
       </form>
+      <ToastContainer/>
     </div>
   );
 };
