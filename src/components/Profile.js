@@ -3,7 +3,7 @@ import './profile.css';
 
 export default function Profile() {
     const authId = localStorage.getItem('userid');
-    const [data, setData] = useState({});
+    const [data, setData] = useState({ name: '', email: '' });
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
@@ -13,13 +13,14 @@ export default function Profile() {
 
     const getData = async () => {
         try {
-            let result = await fetch(`https://royal-backend-buyer.onrender.com/profile/${authId}`);
+            let result = await fetch(`https://royal-backend-seller.onrender.com/profile/${authId}`);
             if (!result.ok) {
                 throw new Error(`Fetch error: ${result.status}`);
             }
             result = await result.json();
             setData(result);
-           console.log(result);
+            // console.log(data);
+            // console.log(data);
             setLoading(false); // Data has been loaded
         } catch (error) {
             setError(error.message);
@@ -42,8 +43,8 @@ export default function Profile() {
                         </div>
                         <div className="coontainer">
                             <h4><b><i>Hi! </i></b></h4>
-                            <h4><b><i>{data.name}</i></b></h4>
-                            <p>Your Email is : {data.email}</p>
+                            <h4><b><i>{data[0].name }</i></b></h4>
+                            <p>Your Email is : {data[0].email}</p>
                         </div>
                     </div>
                
