@@ -73,7 +73,7 @@ const Register = () => {
                     toast.success("Registration Successfully done 😃!", {
                         position: "top-center"
                     });
-                    navigate('/login');
+                    navigate('/');
                 } else {
                     toast.error("Registration failed. Please try again later.", {
                         position: "top-center"
