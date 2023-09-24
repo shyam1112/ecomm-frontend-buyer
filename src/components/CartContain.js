@@ -6,7 +6,8 @@ import { ToastContainer, toast } from 'react-toastify';
 
 const CartContain = () => {
     const [productdetails, setProductDetails] = useState([]);
-    const [selectedColor, setSelectedColor] = useState(""); // State variable for selected color
+    const [selectedColor, setSelectedColor] = useState(""); 
+    const [sizee, setSize]=useState();
     const params = useParams();
 
     const getData = async () => {
@@ -26,7 +27,7 @@ const CartContain = () => {
         if (!selectedColor) {
             toast.error("Please select color :)", {
                 position: "top-center"
-            });            return;
+            }); return;
         }
         let result = await fetch('https://royal-backend-seller.onrender.com/addcart', {
             method: 'post',
@@ -37,17 +38,17 @@ const CartContain = () => {
                 userId: authid,
                 company: item.company,
                 img: item.img,
-                size: item.size,
-                color1: selectedColor, 
+                size:sizee,
+                color1: selectedColor
             }),
             headers: {
                 'content-type': 'application/json'
             },
         });
-        if(result.ok){
+        if (result.ok) {
             toast.success("Product Added To Cart . . . . . . GO TO CART :) ", {
                 position: "top-center"
-            });   
+            });
         }
 
         // Handle the API response as needed
@@ -71,7 +72,26 @@ const CartContain = () => {
                         <p className="productt-size">Company: {item.company}</p>
                         <p className="productt-size">Size: {item.size}</p>
                         <p className="productt-price">Price: &#8377;{item.price}</p>
-                        
+
+                        <div className="form-group">
+                            <label >Select Size : </label>
+                            <select
+                                id="payment-method"
+                                name="paymentMethod"
+                                value={sizee}
+                                onChange={(e)=>setSize(e.target.value)}
+                                required
+                            >
+                                <option value="">SELECT</option>
+                                <option value="M">M</option>
+                                <option value="S">S</option>
+                                <option value="L">L</option>
+                                <option value="XL">XL</option>
+                                <option value="XXL">XXL</option>
+
+                             
+                            </select>
+                        </div>
                         {/* Color selection UI */}
                         <div className="color-selection">
                             <label>Select Color:</label>
@@ -87,7 +107,7 @@ const CartContain = () => {
                                 width: "30px",
                                 height: "20px",
                             }}></span>
-                               <input
+                            <input
                                 type="radio"
                                 name="color"
                                 value={item.color2}
@@ -99,7 +119,7 @@ const CartContain = () => {
                                 width: "30px",
                                 height: "20px",
                             }}></span>
-                               <input
+                            <input
                                 type="radio"
                                 name="color"
                                 value={item.color3}
@@ -113,7 +133,7 @@ const CartContain = () => {
                             }}></span>
                         </div>
 
-                       
+
                         <button onClick={() => addtocart(item)} className="update-button">
                             Add To Cart
                         </button>

@@ -5,7 +5,9 @@ import { useLocation, useNavigate } from 'react-router-dom';
 
 const Checkout = () => {
   const navigate=useNavigate();
+  const authId = localStorage.getItem('userid');
   const [formData, setFormData] = useState({
+    userId:authId,
     name: '',
     email: '',
     number:'',
@@ -25,8 +27,16 @@ const Checkout = () => {
     e.preventDefault();
 
     const orderData = location.state.orderData;
-    console.log(formData);
+    // console.log(formData);
     try {
+      const res = await fetch('http://localhost:5000/addmyorder', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ formData, orderData }), 
+      });
+
       const response = await fetch('https://royal-backend-seller.onrender.com/order', {
         method: 'POST',
         headers: {

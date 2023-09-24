@@ -27,11 +27,7 @@ const Header = () => {
         navigate("/profile/" + authId);
     };
 
-    const goError = () => {
-        navigate("*");
-    };
-
-    const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
+  
 
     return (
         <>

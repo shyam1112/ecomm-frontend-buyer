@@ -69,7 +69,9 @@ function Cart() {
   };
 
   return (
+    <div>
     <div className="cart-container">
+    <button style={{backgroundColor:"green"}} onClick={()=>navigate('/myorder')}> My Order</button>
       <h1>Your Cart</h1>
       <div className="cart-items">
         {cart.map((item, index) => (
@@ -102,6 +104,7 @@ function Cart() {
         <h2>Total: &#8377;{price.toFixed(2)}</h2>
         <button onClick={checkout}>Checkout</button>
       </div>
+    </div>
     </div>
   );
 }

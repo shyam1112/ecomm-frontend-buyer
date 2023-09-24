@@ -10,6 +10,7 @@ import CartContain from "./components/CartContain";
 import Profile from './components/Profile';
 import Checkout from "./components/Checkout";
 import PrivateCmp from "./components/PrivateCmp";
+import Myorder from "./components/Myorder";
 
 function App() {
 
@@ -22,6 +23,7 @@ function App() {
           <Route path="/home" element={<Home />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/checkout" element={<Checkout />} />
+          <Route path="/myorder" element={<Myorder />} />
           <Route path="/profile/:id" element={<Profile />} />
           <Route path='/cartcontains/:id' element={<CartContain />} />
           <Route path="/:id/*" element={<Error />} />
