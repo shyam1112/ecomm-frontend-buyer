@@ -38,6 +38,15 @@ export default function Myorder() {
         updatedIndexes[index] = !updatedIndexes[index];
         setActiveSectionIndexes(updatedIndexes);
     };
+    const deleteorder = async(id)=>{
+        let result = await fetch(`https://royal-backend-seller.onrender.com/myorderid/${id}`, {
+            method: "delete"
+        });
+        result = await result.json();
+        if (result) {
+            getData();
+        }
+    }
   return (
     <div className='myorder'>
     <h1>Order List</h1>
@@ -61,6 +70,7 @@ export default function Myorder() {
                     {/* <h2>Order Details</h2> */}
                     
                     {/* <p> <b>User ID:</b> {order._id}</p> */}
+                    <button onClick={()=>deleteorder(order._id)}>Delete</button>
                     <p> <b>Name:</b> {order.name}</p>
                     <p><b>Email: </b>{order.email}</p>
                     <p><b>Address:</b> {order.address}</p>

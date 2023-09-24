@@ -71,7 +71,7 @@ function Cart() {
   return (
     <div>
     <div className="cart-container">
-    <button style={{backgroundColor:"green"}} onClick={()=>navigate('/myorder')}> My Order</button>
+    {/* <button style={{backgroundColor:"green"}} onClick={()=>navigate('/myorder')}> My Order</button> */}
       <h1>Your Cart</h1>
       <div className="cart-items">
         {cart.map((item, index) => (

@@ -27,20 +27,20 @@ const Header = () => {
         navigate("/profile/" + authId);
     };
 
-  
+
 
     return (
         <>
             <header>
                 <nav>
-                    <div className="logo" onClick={toggleMenu}>
-                        <img src={logo} alt='logo' />
-                        <h5>Royal  Perfume &  Novelty</h5>
+                    <div className="logo" >
+                        <img src={logo} alt='logo' onClick={()=>navigate('/home')}/>
+                        <h5  onClick={()=>navigate('/home') }>Royal  Perfume &  Novelty</h5>
                     </div>
 
-                    {logindata?(<div className='carticon'>
+                    {logindata ? (<div className='carticon'>
                         <Carticon />
-                    </div>):null}
+                    </div>) : null}
 
                     <div className="avtar" onClick={toggleMenu}>
                         {logindata ? (
@@ -67,13 +67,18 @@ const Header = () => {
 
                     {isMenuOpen && (
                         <div className="custom-menu">
-                               {logindata  ? (
-                            <div className="custom-menu-item" onClick={() => {
-                                goDash();
-                                toggleMenu();
-                            }}>Profile</div>
-                            ) : null}   
-                            {logindata  ? (
+                            {logindata ? (
+                                <div className="custom-menu-item" onClick={() => {
+                                    goDash();
+                                    toggleMenu();
+                                }}>Profile</div>
+                            ) : null}    {logindata ? (
+                                <div className="custom-menu-item" onClick={() => {
+                                    navigate('/myorder')
+                                    toggleMenu();
+                                }}>MyOrder</div>
+                            ) : null}
+                            {logindata ? (
                                 <div className="custom-menu-item" onClick={() => {
                                     logoutuser();
                                     toggleMenu();

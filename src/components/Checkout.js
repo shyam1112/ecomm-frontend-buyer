@@ -37,6 +37,10 @@ const Checkout = () => {
         body: JSON.stringify({ formData, orderData }), 
       });
 
+      let result = await fetch(`https://royal-backend-seller.onrender.com/cartsdelete/${authId}`, {
+        method: "delete"
+      });
+     
       const response = await fetch('https://royal-backend-seller.onrender.com/order', {
         method: 'POST',
         headers: {

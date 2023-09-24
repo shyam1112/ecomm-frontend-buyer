@@ -6,12 +6,12 @@ import "./mix.css";
 
 const Login = () => {
     const navigate = useNavigate();
-    // useEffect(() => {
-    //     const auth = localStorage.getItem('user');
-    //     if (auth) {
-    //         navigate("/home");
-    //     }
-    // }, []);
+    useEffect(() => {
+        const auth = localStorage.getItem('user');
+        if (auth) {
+            navigate("/home");
+        }
+    }, []);
 
     const [passShow, setPassShow] = useState(false);
     const [email, setEmail] = useState('');

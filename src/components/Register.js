@@ -15,12 +15,12 @@ const Register = () => {
     const [pass, setPass] = useState('');
     const [cpass, setCpass] = useState('');
 
-    useEffect(() => {
-        const auth = localStorage.getItem('user');
-        if (auth) {
-            navigate("/home");
-        }
-    }, []);
+    // useEffect(() => {
+    //     const auth = localStorage.getItem('user');
+    //     if (auth) {
+    //         navigate("/home");
+    //     }
+    // }, []);
 
     const addUserdata = async (e) => {
         e.preventDefault();
@@ -61,15 +61,16 @@ const Register = () => {
             try {
                 const response = await fetch('https://royal-backend-seller.onrender.com/register', {
                     method: 'POST',
-                    body: JSON.stringify({ name, email, pass, cpass }),
+                    body: JSON.stringify({ name, email, pass }),
                     headers: {
                         'Content-Type': 'application/json'
                     },
                 });
 
+                const data = await response.json();
                 if (response.ok) {
-                    const data = await response.json();
-                    localStorage.setItem("userid", JSON.stringify(data));
+                    // localStorage.setItem("userid", JSON.stringify(data));
+                    // localStorage.setItem("user",data._id);
                     toast.success("Registration Successfully done 😃!", {
                         position: "top-center"
                     });
