@@ -6,8 +6,8 @@ import { ToastContainer, toast } from 'react-toastify';
 
 const CartContain = () => {
     const [productdetails, setProductDetails] = useState([]);
-    const [selectedColor, setSelectedColor] = useState(""); 
-    const [sizee, setSize]=useState();
+    const [selectedColor, setSelectedColor] = useState("");
+    const [sizee, setSize] = useState();
     const params = useParams();
 
     const getData = async () => {
@@ -38,7 +38,7 @@ const CartContain = () => {
                 userId: authid,
                 company: item.company,
                 img: item.img,
-                size:sizee,
+                size: sizee,
                 color1: selectedColor
             }),
             headers: {
@@ -59,12 +59,60 @@ const CartContain = () => {
         setSelectedColor(event.target.value);
     }
 
+
+
+    const [isDropdownOpen, setDropdownOpen] = useState(false);
+
+    const toggleDropdown = () => {
+        setDropdownOpen(!isDropdownOpen);
+    };
+
+    const dropdownStyles = {
+        position: 'relative',
+        display: 'inline-flex',
+    };
+
+    const dropdownContentStyles = {
+        display: isDropdownOpen ? 'flex' : 'none',
+        position: 'absolute',
+        backgroundColor: '#f9f9f9',
+        minWidth: '160px',
+        boxShadow: '0px 8px 16px 0px rgba(0,0,0,0.2)',
+        zIndex: 1,
+        width: '400px', // Set the width to 600px
+        top: '50px', // Adjust the top position as needed
+        left: '-100px', // Adjust the left position as needed
+    };
+    const largeImageStyles = {
+        width: '100%', // Ensure the image takes the full width of the container
+        height: 'auto', // Maintain the aspect ratio
+      };
+
+
     return (
         <div className="productt-detailss">
             {productdetails.map((item, index) => (
                 <div className="productt" key={item._id}>
                     <div className="productt-image-container">
-                        <img src={item.img} alt={item.name} className="productt-image" />
+                        {/* <img src={item.img} alt={item.name} className="productt-image" /> */}
+                        <div
+                            className="productt-image"
+                            style={dropdownStyles}
+                            onMouseEnter={toggleDropdown}
+                            onMouseLeave={toggleDropdown}
+                        >
+                            <img
+                                src={item.img}
+                                alt="Cinque Terre"
+                            />
+                            <div className="dropdown-content" style={dropdownContentStyles}>
+                                <img
+                                    src={item.img}
+                                    alt="Cinque Terre"
+                                    style={largeImageStyles}
+                                />
+                            </div>
+                        </div>
                     </div>
                     <div className="productt-content">
                         <h2 className="productt-title">{item.name}</h2>
@@ -79,7 +127,7 @@ const CartContain = () => {
                                 id="payment-method"
                                 name="paymentMethod"
                                 value={sizee}
-                                onChange={(e)=>setSize(e.target.value)}
+                                onChange={(e) => setSize(e.target.value)}
                                 required
                             >
                                 <option value="">SELECT</option>
@@ -89,7 +137,7 @@ const CartContain = () => {
                                 <option value="XL">XL</option>
                                 <option value="XXL">XXL</option>
 
-                             
+
                             </select>
                         </div>
                         {/* Color selection UI */}
@@ -106,6 +154,7 @@ const CartContain = () => {
                                 backgroundColor: `${item.color1}`,
                                 width: "30px",
                                 height: "20px",
+
                             }}></span>
                             <input
                                 type="radio"
