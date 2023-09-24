@@ -79,9 +79,10 @@ const CartContain = () => {
         minWidth: '160px',
         boxShadow: '0px 8px 16px 0px rgba(0,0,0,0.2)',
         zIndex: 1,
-        width: '400px', // Set the width to 600px
+        width: '300px', // Set the width to 600px
+        height:'200px',
         top: '50px', // Adjust the top position as needed
-        left: '-100px', // Adjust the left position as needed
+        left: '-50px', // Adjust the left position as needed
     };
     const largeImageStyles = {
         width: '100%', // Ensure the image takes the full width of the container
