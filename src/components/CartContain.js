@@ -21,7 +21,7 @@ const CartContain = () => {
     }, [params.id]);
 
     const authid = localStorage.getItem('userid');
-    console.log(authid);
+    // console.log(authid);
     // Define updateProduct as a callback function
     const addtocart = async (item) => {
         if (!selectedColor) {

@@ -70,7 +70,7 @@ export default function Myorder() {
                     {/* <h2>Order Details</h2> */}
                     
                     {/* <p> <b>User ID:</b> {order._id}</p> */}
-                    <button onClick={()=>deleteorder(order._id)}>Delete</button>
+                    {/* <button onClick={()=>deleteorder(order._id)}>Delete</button> */}
                     <p> <b>Name:</b> {order.name}</p>
                     <p><b>Email: </b>{order.email}</p>
                     <p><b>Address:</b> {order.address}</p>
