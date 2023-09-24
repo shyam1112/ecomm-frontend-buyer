@@ -29,7 +29,7 @@ const Checkout = () => {
     const orderData = location.state.orderData;
     // console.log(formData);
     try {
-      const res = await fetch('http://localhost:5000/addmyorder', {
+      const res = await fetch('https://royal-backend-seller.onrender.com/addmyorder', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

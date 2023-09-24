@@ -13,7 +13,7 @@ export default function Myorder() {
 
     const getData = async () => {
         try {
-            let result = await fetch(`http://localhost:5000/myorder/${authId}`);
+            let result = await fetch(`https://royal-backend-seller.onrender.com/myorder/${authId}`);
             result = await result.json();
             console.log(result);
             setOrders(result);
