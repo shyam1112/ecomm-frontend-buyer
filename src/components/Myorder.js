@@ -15,7 +15,7 @@ export default function Myorder() {
         try {
             let result = await fetch(`https://royal-backend-seller.onrender.com/myorder/${authId}`);
             result = await result.json();
-            console.log(result);
+            // console.log(result);
             setOrders(result);
             // Initialize activeItemIndexes and activeSectionIndexes arrays
             setActiveItemIndexes(new Array(result.length).fill(false));
@@ -76,6 +76,7 @@ export default function Myorder() {
                     <p><b>Address:</b> {order.address}</p>
                     <p><b>Payment Method:</b> {order.paymentMethod}</p>
                     <p><b>Total: </b>{order.total}</p>
+                    <p><b>Date: </b>{order.date}</p>
 
                     <h2>Order Items</h2>
                     <ul>

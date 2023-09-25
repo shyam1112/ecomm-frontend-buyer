@@ -6,6 +6,8 @@ import { useLocation, useNavigate } from 'react-router-dom';
 const Checkout = () => {
   const navigate = useNavigate();
   const authId = localStorage.getItem('userid');
+  const d = new Date();
+  let text = d.toString();
   const [formData, setFormData] = useState({
     userId: authId,
     name: '',
@@ -13,6 +15,7 @@ const Checkout = () => {
     number: '',
     address: '',
     paymentMethod: 'Cash On Delivery',
+    date : text
   });
 
   const location = useLocation();

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Navigate, useNavigate, useParams } from "react-router-dom";
 import './cartcontains.css'
 import { ToastContainer, toast } from 'react-toastify';
 
@@ -9,6 +9,8 @@ const CartContain = () => {
     const [selectedColor, setSelectedColor] = useState("");
     const [sizee, setSize] = useState();
     const params = useParams();
+    const navigate = useNavigate();
+    const [isSubmitting, setIsSubmitting] = useState(false);
 
     const getData = async () => {
         let result = await fetch(`https://royal-backend-seller.onrender.com/products/${params.id}`);
@@ -24,6 +26,11 @@ const CartContain = () => {
     // console.log(authid);
     // Define updateProduct as a callback function
     const addtocart = async (item) => {
+        if (isSubmitting) {
+            return; // Prevent multiple submissions
+        }
+        setIsSubmitting(true);
+
         if (!selectedColor) {
             toast.error("Please select color :)", {
                 position: "top-center"
@@ -49,7 +56,10 @@ const CartContain = () => {
             toast.success("Product Added To Cart . . . . . . GO TO CART :) ", {
                 position: "top-center"
             });
+            setIsSubmitting(false);
+            navigate('/cart');
         }
+
 
         // Handle the API response as needed
     }
@@ -80,14 +90,14 @@ const CartContain = () => {
         boxShadow: '0px 8px 16px 0px rgba(0,0,0,0.2)',
         zIndex: 1,
         width: '300px', // Set the width to 600px
-        height:'200px',
+        height: '200px',
         top: '50px', // Adjust the top position as needed
         left: '-50px', // Adjust the left position as needed
     };
     const largeImageStyles = {
         width: '100%', // Ensure the image takes the full width of the container
         height: 'auto', // Maintain the aspect ratio
-      };
+    };
 
 
     return (
@@ -184,8 +194,10 @@ const CartContain = () => {
                         </div>
 
 
-                        <button onClick={() => addtocart(item)} className="update-button">
-                            Add To Cart
+                        <button onClick={() => addtocart(item)} disabled={isSubmitting} className="update-button">
+                            {isSubmitting ? <div class="spinner-border" role="status">
+                                <span class="sr-only">:)</span>
+                            </div> : 'Add to Cart'}
                         </button>
                     </div>
                 </div>
